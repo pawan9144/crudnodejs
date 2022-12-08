@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const RegisterSchema = new Schema({
+const UserSchema = new Schema({
   name: { type: String },
   phoneNo: {
     type: String,
@@ -19,6 +19,6 @@ const RegisterSchema = new Schema({
   },
 });
 
-const UserRegister = mongoose.model("UserRegister", RegisterSchema);
+const User = mongoose.model("User", UserSchema);
 
-module.exports = UserRegister;
+module.exports = User;

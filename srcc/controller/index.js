@@ -17,5 +17,16 @@ const createRecord = async (req, res, next) => {
     res.status(400).send(e);
   }
 };
+const getMensRecord = async (req, res, next) => {
+  try {
+    const getDetails = await MensRanking.find({});
+    res.status(200).json({
+      message: "player details",
+      getDetails,
+    });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+};
 
-module.exports = createRecord;
+module.exports = { createRecord, getMensRecord };

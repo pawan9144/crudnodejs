@@ -1,18 +1,19 @@
 const express = require("express");
 const app = express();
-const router  = require("../srcc/routers/detail");
-require("../srcc/db/conn")
+const router = require("../srcc/routers/detail");
+const { userRouter } = require("./routers");
+require("../srcc/db/conn");
 
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.get("/", (req, res) => {
-    res.send(`
+  res.send(`
       <h1 style="color:blue;text-align:center;">This is a heading</h1>`);
-  });
-app.use(router);
-
-
+});
+// app.use("/api", router);
+app.use("/", router);
+app.use("/user", userRouter);
 
 // // we will handle Post Req
 
@@ -51,7 +52,6 @@ app.use(router);
 // }
 // })
 
-
 // // we will handle single get Req indivisual
 
 // app.get("/mens/:id",async (req,res,next)=>{
@@ -62,12 +62,11 @@ app.use(router);
 //             message: "player single detail",
 //             getSingleDetail
 //         })
-    
+
 //     }catch(e){
 //     res.status(400).send(e)
 //     }
 //     })
-    
 
 //     // we will handle patch Req indivisual
 
@@ -81,12 +80,12 @@ app.use(router);
 //             message: "player update",
 //             getSingleDetail
 //         })
-    
+
 //     }catch(e){
 //     res.status(500).send(e)
 //     }
 //     })
-    
+
 //     // we will handle delete Req indivisual
 
 //     app.delete("/mens/:id",async (req,res,next)=>{
@@ -97,14 +96,12 @@ app.use(router);
 //                 message: "player delete",
 //                 getSingleDetail
 //             })
-        
+
 //         }catch(e){
 //         res.status(500).send(e)
 //         }
 //         })
 
-
 app.listen(port, () => {
-    console.log(`server connection with port no. ${port}`);
-  });
-  
+  console.log(`server connection with port no. ${port}`);
+});

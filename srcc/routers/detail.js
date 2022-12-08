@@ -9,17 +9,7 @@ router.post("/mens", createRecord);
 
 // we will handle get Req
 
-router.get("/mens", async (req, res, next) => {
-  try {
-    const getDetails = await MensRanking.find({});
-    res.status(200).json({
-      message: "player details",
-      getDetails,
-    });
-  } catch (e) {
-    res.status(400).send(e);
-  }
-});
+router.get("/mens", getMensRecord);
 
 // we will handle single get Req indivisual
 
